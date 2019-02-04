@@ -13,3 +13,12 @@
       state: latest
       update_cache: yes
       cache_valid_time: 86400
+  - name: copy files without backup
+    copy:
+      src: "{{ item.src }}"
+      dest: "{{ item.dst }}"
+      mode: 0644
+      owner: root
+      group: root
+    with_items:
+      - { src: 'ansible.cfg', dst: '/etc/ansible' }

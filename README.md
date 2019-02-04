@@ -2,7 +2,7 @@ frcvision
 
 # To bootstrap:
 * as root ( sudo -i )
-  * apt-get update && apt-get install python3-pip -y && pip3 install ansible
+  * apt-get update && apt-get install -y python3-pip git && pip3 install ansible
 
 # To run:
-* ansible-pull -U git@github.com:Armada2508/frcvision.git anisble/frcvision.yml
+* ansible-pull -U https://github.com/Armada2508/frcvision.git ansible/frcvision.yml
