@@ -6,13 +6,15 @@
   become: yes
 
   tasks:
-  - apt:
-      name:
-      - python3
-      - python3-pip
-      state: latest
-      update_cache: yes
-      cache_valid_time: 86400
+  - name: ensure directories are created
+    file: 
+      path: "{{item}}"
+      state: directory
+      mode: 0644
+      owner: root
+      group: root
+    with_items:
+      - "/etc/ansible"
   - name: copy files without backup
     copy:
       src: "{{ item.src }}"
@@ -22,3 +24,16 @@
       group: root
     with_items:
       - { src: 'ansible.cfg', dst: '/etc/ansible' }
+  - name: install needed apt tools
+    apt:
+      name:
+      - python3
+      - python3-pip
+      state: latest
+      update_cache: yes
+      cache_valid_time: 86400
+  - name: install needed pip tools
+    pip:
+      name:
+      - ansible
+      state: latest
