@@ -32,6 +32,7 @@
       - rpi_ws281x
       - adafruit-circuitpython-neopixel
       state: latest
+      executable: pip3
       update_cache: yes
       cache_valid_time: 86400
   - name: install needed pip tools
